@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            overflow: hidden; /* Prevent scrollbars when modal is open */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .events-list h2 {
+            margin-top: 0;
+        }
+
+        .event-card {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .event-card h3 {
+            margin-top: 0;
+        }
+
+        .actions {
+            margin-top: 10px;
+        }
+
+        .actions .btn {
+            margin-right: 10px;
+        }
+
+        .form-container {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure it is above other content */
+            transition: all 0.3s ease;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999; /* Just below the form */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical; /* Allows resizing only vertically */
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <header>
+            <h1>Manage Events</h1>
+            <button class="btn btn-primary" onclick="showForm('create')">Create New Event</button>
+        </header>
+
+        <section class="events-list">
+            <h2>Existing Events</h2>
+            <div class="event-card">
+                <h3>Event Title 1</h3>
+                <p>Date: 2024-09-01</p>
+                <p>Description: A brief description of the event.</p>
+                <div class="actions">
+                    <button class="btn btn-success" onclick="showForm('update')">Edit</button>
+                    <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                </div>
+            </div>
+            <!-- More event cards can go here -->
+        </section>
+
+        <div id="form-container" class="form-container">
+            <h2 id="form-title">Create Event</h2>
+            <form id="event-form">
+                <label for="title">Event Title</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="delete-btn" style="display: none;" onclick="confirmDelete()">Delete Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showForm(action) {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('form-title').textContent = action === 'create' ? 'Create Event' : 'Update Event';
+            document.getElementById('delete-btn').style.display = action === 'update' ? 'inline-block' : 'none';
+        }
+
+        function hideForm() {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function confirmDelete() {
+            if (confirm("Are you sure you want to delete this event?")) {
+                // Logic for deleting the event goes here
+                alert("Event deleted");
+            }
+        }
+
+        document.getElementById('event-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const description = document.getElementById('description').value;
+
+            if (document.getElementById('form-title').textContent === 'Create Event') {
+                // Logic for creating a new event goes here
+                alert(`Event created:\nTitle: ${title}\nDate: ${date}\nDescription: ${description}`);
+            } else {
+                // Logic for updating the event goes here
+                alert(`Event updated:\nTitle: ${title}\nDate: ${date}\nDescription: ${description}`);
+            }
+
+            hideForm();
+        });
+    </script>
+</body>
+
+</html>

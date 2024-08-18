@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Application</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo>a{
+            color: #0056b3;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .logo>img{
+            height:50px;
+            width:50px;
+            margin-right: 10px;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links>a:hover {
+            color: rgb(219, 92, 92);
+        }
+
+        .hero {
+            background-color: #E6F7FB;
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: #c9136e;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: #0056b3;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero>button {
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            background-color: #00a7c4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        .hero>button>a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .hero>button:hover {
+            background-color: #008b9c;
+        }
+
+        .about {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #e9ecef;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            color: #555;
+        }
+
+        footer {
+            background-color: #064268;
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../assets/logo.png" alt="">
+            <a href="index.html">VolunteerApp</a>
+        </div>
+        <div class="nav-links">
+            <a href="FindOpportunities.html">Find Opportunities</a>
+            <a href="myAccount.html">My Account</a>
+            <a href="recruit.html">Recruit Volunteers</a>
+            <a href="auth\User\user-auth.html" id="auth-link">Sign Up</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Make a Difference, One Volunteer at a Time</h1>
+        <p>Find opportunities to volunteer in your community and make an impact.</p>
+        <button><a href="FindOpportunities.html">Find Opportunities</a></button>
+    </section>
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>
+            We connect volunteers with meaningful opportunities to serve their communities. Whether you are looking to
+            give back, learn new skills, or meet like-minded people, we have something for everyone.
+        </p>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>For support, reach out to us at: <strong>support@example.com</strong></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 VolunteerApp. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const authLink = document.getElementById("auth-link");
+        const accessToken = localStorage.getItem('accessToken');
+
+        if (accessToken) {
+            authLink.textContent = "Sign Out";
+        } else {
+            authLink.textContent = "Signup";
+        }
+    </script>
+</body>
+
+</html>

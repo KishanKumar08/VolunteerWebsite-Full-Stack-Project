@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruit Volunteer</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            background: #f4f4f4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e3d9d9;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo>a{
+            color: #0056b3;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .logo>img{
+            height:50px;
+            width:50px;
+            margin-right: 10px;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links>a:hover {
+            color: rgb(219, 92, 92);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(55, 6, 6, 0.6), rgba(255, 0, 0, 0.6));
+            color: black;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .form-section {
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: -50px;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: none;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../assets/logo.png" alt="">
+            <a href="index.html">VolunteerApp</a>
+        </div>
+        <div class="nav-links">
+            <a href="opp.html">Find Opportunities</a>
+            <a href="account.html">My Account</a>
+            <a href="#">Recruit Volunteers</a>
+            <a href="auth\User\user-auth.html" id="auth-link">Sign Up</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Recruit Volunteers for Your Organization</h1>
+        <p>Connect with passionate individuals who want to make a difference.</p>
+    </section>
+
+    <section class="form-section">
+        <h2>Create an Opportunity</h2>
+        <form id="recruitForm">
+            <div class="form-group">
+                <label for="title">Opportunity Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter the title of the opportunity" required>
+            </div>
+            <div class="form-group">
+                <label for="organization">Organization Name:</label>
+                <input type="text" id="organization" name="organization" placeholder="Enter your organization name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Describe the opportunity" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter the location" required>
+            </div>
+            <div class="form-group">
+                <label for="deadline">Application Deadline:</label>
+                <input type="date" id="deadline" name="deadline" required>
+            </div>
+            <button type="submit">Submit Opportunity</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 VolunteerHub | Connecting volunteers with opportunities</p>
+    </footer>
+
+    <script>
+        document.getElementById('recruitForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const organization = document.getElementById('organization').value;
+            const description = document.getElementById('description').value;
+            const location = document.getElementById('location').value;
+            const deadline = document.getElementById('deadline').value;
+
+            // Simulate form submission and show a confirmation message
+            alert(`Opportunity Created!\n\nTitle: ${title}\nOrganization: ${organization}\nLocation: ${location}\nDeadline: ${deadline}`);
+
+            // Optionally reset the form after submission
+            document.getElementById('recruitForm').reset();
+        });
+    </script>
+</body>
+
+</html>

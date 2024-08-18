@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Match</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff6d3a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo>a{
+            color: #0056b3;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .logo>img{
+            height:50px;
+            width:50px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links>a:hover {
+            color: rgb(219, 92, 92);
+        }
+           
+
+        .filters {
+            padding: 20px;
+            background-color: #e6f7fb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .filters h2 {
+            color: #ff6d3a;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .filter-button {
+            background-color: #00a7c4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .location-filter {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .dropdowns select, .search-bar {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        .clear-filters {
+            background-color: transparent;
+            border: none;
+            color: #ff6d3a;
+            cursor: pointer;
+        }
+
+        .opportunities {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .opportunities h3 {
+            font-size: 24px;
+            color: #333333;
+        }
+
+        .opportunity {
+            border: 1px solid #eeeeee;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .opportunity h4 {
+            color: #333333;
+            margin: 0 0 10px 0;
+        }
+
+        .opportunity p {
+            margin: 5px 0;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../assets/logo.png" alt="">
+            <a href="index.html">VolunteerApp</a>
+        </div>
+        <div class="nav-links">
+            <a href="FindOpportunities.html">Find Opportunities</a>
+            <a href="myAccount.html">My Account</a>
+            <a href="recruit.html">Recruit Volunteers</a>
+            <a href="auth\User\user-auth.html" id="auth-link">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Filters Section -->
+    <section class="filters">
+        <h2>Find Volunteer Opportunities</h2>
+        <div class="filter-options">
+            <button class="filter-button">In-Person</button>
+            <button class="filter-button">Virtual</button>
+            <input type="text" class="location-filter" placeholder="Enter Location">
+            <div class="dropdowns">
+                <select>
+                    <option>Cause Areas</option>
+                </select>
+                <select>
+                    <option>Skills</option>
+                </select>
+                <select>
+                    <option>More Filters</option>
+                </select>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search by Keyword">
+            <button class="clear-filters">Clear All Filters</button>
+        </div>
+    </section>
+
+    <!-- Opportunities Section -->
+    <section class="opportunities">
+        <h3>The Best Volunteer Opportunities in Udaipur</h3>
+        <p>150 volunteers are needed near Udaipur</p>
+        <div class="opportunity">
+            <h4>Volunteer India Udaipur Construction & Conservation</h4>
+            <p>Organization: <a href="#">A Broader View Volunteers</a></p>
+            <p>Flexible Schedule | Udaipur, 11111 IN</p>
+            <p>By choosing our renovation and community awareness placement...</p>
+            <p>Date Posted: July 1, 2024</p>
+        </div>
+    </section>
+</body>
+</html>
